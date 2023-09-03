@@ -1,9 +1,8 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { AppContext } from '../context/AppContext';
-import ExpenseTotal from './ExpenseTotal';
 
 const Budget = () => {
-    const { budget, dispatch } = useContext(AppContext);
+    const { budget, dispatch, totalExpenses } = useContext(AppContext);
 
     // Local state for the input field
     const [inputBudget, setInputBudget] = useState(budget);
@@ -24,7 +23,7 @@ const Budget = () => {
                 type: 'SET_BUDGET',
                 payload: 20000
             });
-        } else if (parseInt(inputBudget, 10) < parseInt(ExpenseTotal, 10)) {
+        } else if (parseInt(inputBudget, 10) < totalExpenses) {
             alert('Budget cannot be lower than the current total expenses');
             setInputBudget(budget);
         }else {
