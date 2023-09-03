@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { AppContext } from '../context/AppContext';
 
 const Budget = () => {
-    const { budget, dispatch, totalExpenses } = useContext(AppContext);
+    const { budget, dispatch, totalExpenses, currency } = useContext(AppContext);
 
     // Local state for the input field
     const [inputBudget, setInputBudget] = useState(budget);
@@ -36,7 +36,7 @@ const Budget = () => {
 
     return (
         <div className='alert alert-secondary'>
-            Budget: £
+            Budget: {currency}
             <input
                 required='required'
                 type='number'
