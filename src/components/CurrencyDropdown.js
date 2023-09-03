@@ -4,20 +4,25 @@ import { AppContext } from '../context/AppContext';
 const CurrencyDropdown = () => {
     const { dispatch, currency } = useContext(AppContext);
 
-    const handleChange = (e) => {
+    const handleCurrencyChange = (e) => {
+        const selectedCurrency = e.target.value;
+        console.log("Selected Currency:", selectedCurrency);
         dispatch({
             type: 'CHG_CURRENCY',
-            payload: e.target.value,
+            payload: selectedCurrency,
         });
     };
 
     return (
-        <select value={currency} onChange={handleChange}>
-            <option value="$">$ - Dollar</option>
-            <option value="£">£ - Pound</option>
-            <option value="€">€ - Euro</option>
-            <option value="₹">₹ - Ruppee</option>
-        </select>
+        <div className="alert alert-secondary">
+            Currency
+            <select value={currency} onChange={handleCurrencyChange} key={currency}>
+                <option value="$">$ - US Dollar</option>
+                <option value="£">£ Pound </option>
+                <option value="€">€ - Euro</option>
+                <option value="₹">₹ - Ruppee</option>
+            </select>
+        </div>
     );
 };
 
