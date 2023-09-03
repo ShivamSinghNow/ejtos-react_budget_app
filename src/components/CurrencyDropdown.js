@@ -1,14 +1,22 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
+import { AppContext } from '../context/AppContext';
 
 const CurrencyDropdown = () => {
-    const {currency, setCurrency} = useState('');
+    const {dispatch} = useContext(AppContext);
+
+    const changeCurrency = (val)=>{
+        dispatch({
+            type: 'CHG_CURRENCY',
+            payload: val,
+        })
+}
 
    
 
     return (
         <div className="alert alert-secondary">
             Currency: (
-            <select className = "custom-select" value={currency} onChange={(event) => setCurrency(event.target.value)} style = {{backgroundColor: 'green'}}>
+            <select name="currency" id = "currency" onChange={(event) => changeCurrency(event.target.value)} style = {{backgroundColor: 'green'}}>
                 <option value="$">$ Dollar</option>
                 <option value="£">£ Pound </option>
                 <option value="€">€ Euro</option>
@@ -19,3 +27,5 @@ const CurrencyDropdown = () => {
 };
 
 export default CurrencyDropdown;
+
+

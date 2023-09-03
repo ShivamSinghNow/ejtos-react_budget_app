@@ -68,10 +68,9 @@ export const AppReducer = (state, action) => {
         
         case 'CHG_CURRENCY':
             action.type = "DONE";
-            console.log("Changing currency to:", action.payload);
+            state.currency = action.payload; 
             return {
                 ...state,
-                currency: action.payload,
             };
 
         default:
