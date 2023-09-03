@@ -15,14 +15,14 @@ const CurrencyDropdown = () => {
 
     return (
         <div className="alert alert-secondary">
-            Currency
+            Currency: (
             <select value={currency} onChange={handleCurrencyChange} key={currency}>
                 <option value="$">$ - US Dollar</option>
                 <option value="£">£ Pound </option>
                 <option value="€">€ - Euro</option>
                 <option value="₹">₹ - Ruppee</option>
             </select>
-        </div>
+            )</div>
     );
 };
 
